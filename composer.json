@@ -1,0 +1,29 @@
+{
+    "name": "viana-devs/wp-games",
+    "description": "Integração Unity e WordPress",
+    "require": {
+      "roots/wordpress": "*",
+      "wpackagist-plugin/svg-support": "^2.3"
+    },
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "https://wpackagist.org"
+      }
+    ],
+    "scripts": {
+      "move-wordpress": [
+        "rm -rf wordpress/wp-content/plugins/*",
+        "rm -rf wordpress/wp-content/themes/*",
+        "cp -rf wordpress/* .",
+        "rm -rf wordpress"
+      ],
+      "post-install-cmd": [
+        "@move-wordpress"
+      ],
+      "post-update-cmd": [
+        "@move-wordpress"
+      ]
+    }
+  }
+  
